@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    while (cin >> n && n != 0) {
+        int matrix[100][100];
+        int rowSum[100] = {0};
+        int colSum[100] = {0};
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                cin >> matrix[i][j];
+                rowSum[i] += matrix[i][j];
+                colSum[j] += matrix[i][j];
+            }
+        }
+
+        int oddRow = -1, oddCol = -1;
+        int oddRowCount = 0, oddColCount = 0;
+
+        for (int i = 0; i < n; i++) {
+            if (rowSum[i] % 2 != 0) {
+                oddRow = i;
+                oddRowCount++;
+            }
+            if (colSum[i] % 2 != 0) {
+                oddCol = i;
+                oddColCount++;
+            }
+        }
+
+        if (oddRowCount == 0 && oddColCount == 0) {
+            cout << "OK" << endl;
+        } else if (oddRowCount == 1 && oddColCount == 1) {
+            cout << "Change bit (" << oddRow + 1 << "," << oddCol + 1 << ")" << endl;
+        } else {
+            cout << "Corrupt" << endl;
+        }
+    }
+    return 0;
+}
