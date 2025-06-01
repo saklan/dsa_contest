@@ -1,0 +1,17 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    long long n;
+    unordered_map<long long, long long> mp;
+    vector<long long> order;
+    while(cin >> n){
+        if(mp.find(n) == mp.end())
+            order.push_back(n);
+        mp[n]++;
+    }
+    for(auto val : order){
+        cout << val << " " << mp[val] << endl;
+    }
+    return 0;
+}
