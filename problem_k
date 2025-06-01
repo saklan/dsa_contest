@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int t;
+    cin >> t;
+    for (int cs = 1; cs <= t; cs++) {
+        long long a, b;
+        cin >> a >> b;
+
+        long long x = b / 3;
+        long long r1 = b % 3;
+        long long total_b = x * 2;
+        if (r1 == 2) total_b += 1;
+
+        long long y = (a - 1) / 3;
+        long long r2 = (a - 1) % 3;
+        long long total_a = y * 2;
+        if (r2 == 2) total_a += 1;
+
+        long long res = total_b - total_a;
+
+        cout << "Case " << cs << ": " << res << endl;
+    }
+    return 0;
+}
