@@ -1,0 +1,53 @@
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void solve() {
+    string ln, txt;
+    set<string> st;
+
+    while (getline(cin, ln)) {
+        if (!ln.empty() && ln[ln.size() - 1] == '-') {
+            txt += ln.substr(0, ln.size() - 1);
+        } else {
+            txt += ln + ' ';
+        }
+    }
+
+    int n = txt.length();
+    string w;
+    for (int i = 0; i <= n; i++) {
+        char c = txt[i];
+        if (isalpha(c) || c == '-') {
+            w += tolower(c);
+        } else {
+            if (!w.empty()) {
+                int l = 0, r = w.size();
+                while (l < r && w[l] == '-') l++;
+                while (r > l && w[r - 1] == '-') r--;
+                string s = w.substr(l, r - l);
+                if (!s.empty()) st.insert(s);
+                w.clear();
+            }
+        }
+    }
+
+    if (!w.empty()) {
+        int l = 0, r = w.size();
+        while (l < r && w[l] == '-') l++;
+        while (r > l && w[r - 1] == '-') r--;
+        string s = w.substr(l, r - l);
+        if (!s.empty()) st.insert(s);
+    }
+
+    for (auto x : st) cout << x << '\n';
+}
+
+
+
+
+
+int main() {
+    solve();
+    return 0;
+}
