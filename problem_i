@@ -1,0 +1,54 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int T;
+    cin >> T;
+    
+    for (int t = 1; t <= T; t++) {
+        int n;
+        cin >> n;
+        
+        unordered_map<int, pair<string, int>> tab;
+        string victim = "", thief = "";
+        
+        for (int i = 0; i < n; i++) {
+            string name;
+            int l, w, h;
+            cin >> name >> l >> w >> h;
+            int vol = l * w * h;
+            
+            if (tab.find(vol) != tab.end()) {
+                tab[vol].first = name;
+                tab[vol].second++;
+            } else {
+                tab[vol] = {name, 1};
+            }
+        }
+        
+        if (tab.size() == 1) {
+            cout << "Case " << t << ": no thief" << endl;
+        } else {
+            int smallest = INT_MAX, largest = -1;
+            for (auto& entry : tab) {
+                int volume = entry.first;
+                string name = entry.second.first;
+                int freq = entry.second.second;
+                
+                if (freq == 1) {
+                    if (volume < smallest) {
+                        smallest = volume;
+                        victim = name;
+                    }
+                    if (volume > largest) {
+                        largest = volume;
+                        thief = name;
+                    }
+                }
+            }
+            cout << "Case " << t << ": " << thief << " took chocolate from " << victim << endl;
+        }
+    }
+    
+    return 0;
+}
