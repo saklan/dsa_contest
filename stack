@@ -1,0 +1,78 @@
+/*
+ *   BISMILLAHIR RAHMANIR RAHIM
+ *   ==========================
+ *
+ *   Submitted By: SAKLAN
+ *   North East University Bangladesh
+ */
+
+#include <bits/stdc++.h>
+using namespace std;
+
+#define ll long long
+#define ld long double
+#define  cinv(v)  for(auto &i:v) cin >> i;
+#define  vi   vector<int>
+#define  vii  vector<ll>
+#define mod 1000000000
+#define  cout(v)  for(auto e:v) cout << e << sp;
+#define srt(v) sort(v.begin(),v.end())
+#define rsrt(v) sort(v.rbegin(),v.rend())
+#define yes cout<<"YES\n"
+#define no cout<<"NO\n"
+#define endl '\n'
+#define start long long t; cin >> t; while(t--)
+#define saklan ios::sync_with_stdio(0); cin.tie(0);
+
+
+int stk[5], top = -1;
+bool isEmpty(){
+    return top == -1;
+}
+bool full(){
+    return top >= 4;
+}
+
+void pop(){
+    if(!isEmpty()){
+        top--;
+    }else{
+        cout << "Stack is empty" << endl;
+        return;
+    }
+}
+
+void push(int val){
+    if(!full()){
+        top++;
+        stk[top] = val;
+    }else{
+        cout << "Stack is Full" << endl;
+        return;
+    }
+}
+
+
+
+
+
+
+int main() {
+    saklan
+//    #ifndef ONLINE_JUDGE
+//        freopen("input.txt", "r", stdin);
+//    #endif
+    //solve();
+//    push(10);
+//    push(20);
+//    push(30);
+//    push(40);
+//    push(50);
+//    push(60);
+//    push(40);
+//    push(40);
+    //pop();
+    cout << stk[top] << endl;
+    // cout << top << endl;
+    return 0;
+}
